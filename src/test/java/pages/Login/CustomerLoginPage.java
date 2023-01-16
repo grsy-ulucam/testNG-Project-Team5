@@ -1,4 +1,4 @@
-package pages;
+package pages.Login;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,8 +15,6 @@ public class CustomerLoginPage extends BaseTestReport {
 
     public CustomerLoginPage(){
 
-
-
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
@@ -27,14 +25,9 @@ public class CustomerLoginPage extends BaseTestReport {
     WebElement login;
 
 
-    public void customerLogin() throws InterruptedException {
-
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-
+    public void customerLogin(){
         join.click();
-
         login.click();
-
 
     }
 }
