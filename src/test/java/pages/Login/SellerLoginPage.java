@@ -1,4 +1,4 @@
-package pages;
+package pages.Login;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
@@ -8,8 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
-import org.testng.asserts.Assertion;
 import utilities.BaseTestReport;
 import utilities.Driver;
 
