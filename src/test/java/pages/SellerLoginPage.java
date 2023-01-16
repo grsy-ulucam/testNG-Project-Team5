@@ -5,9 +5,17 @@ import org.openqa.selenium.WindowType;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import org.testng.Assert;
+import utilities.BaseTestReport;
 import utilities.Driver;
 
-public class SellerLoginPage {
+
+import java.time.Duration;
+
+public class SellerLoginPage extends BaseTestReport {
 
     public SellerLoginPage() {
 
@@ -25,15 +33,20 @@ public class SellerLoginPage {
 
     public void logAsSeller()  {
 
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         becomeSeller.click();
 
         Driver.getDriver().switchTo().newWindow(WindowType.TAB);
 
         Driver.getDriver().get("https://admin-pickbazar-rest.vercel.app/register");
 
-        login.click();
+        wait.until(ExpectedConditions.elementToBeClickable(login)).click();
 
-        login2.click();
+        wait.until(ExpectedConditions.urlToBe("https://admin-pickbazar-rest.vercel.app/login"));
+        wait.until(ExpectedConditions.elementToBeClickable(login2)).click();
+
+       Assert.fail();
+    }
 
 
     }
@@ -51,4 +64,3 @@ public class SellerLoginPage {
 
 
 
-}
