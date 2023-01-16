@@ -17,11 +17,13 @@ public class ConfigReader {
             properties.load(fis);
 
             fis.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     public static String getProperty(String key){
+
         return properties.getProperty(key);
     }
 }
