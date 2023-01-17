@@ -5,8 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class firstProduct {
-    public firstProduct() {
+public class FirstProduct {
+    public FirstProduct() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
