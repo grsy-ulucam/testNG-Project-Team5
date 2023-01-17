@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 public class US015 {
     @Test
     public void tC01(){
+        System.out.println("Deneme");
 
     }
 }
