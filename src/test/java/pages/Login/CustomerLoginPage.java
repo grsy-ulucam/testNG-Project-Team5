@@ -24,11 +24,16 @@ public class CustomerLoginPage extends BaseTestReport {
     @FindBy(xpath = "//button[text()='Login']")
     WebElement login;
 
+    public void customerLogin() {
 
-    public void customerLogin() {//customer
-        join.click();
-        login.click();
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+
+            join.click();
+
+            login.click();
+
+
+        }
 
 
     }
-}
