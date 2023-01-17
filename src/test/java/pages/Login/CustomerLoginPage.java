@@ -13,9 +13,9 @@ import java.time.Duration;
 
 public class CustomerLoginPage extends BaseTestReport {
 
-    public CustomerLoginPage(){
+    public CustomerLoginPage() {
 
-        PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(xpath = "//button[text()='Join']")
@@ -25,20 +25,9 @@ public class CustomerLoginPage extends BaseTestReport {
     WebElement login;
 
 
-
-    public void customerLogin(){
+    public void customerLogin() {//customer
         join.click();
         login.click();
-
-
-    public void customerLogin() throws InterruptedException {
-
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-
-        join.click();
-
-        login.click();
-
 
 
     }
