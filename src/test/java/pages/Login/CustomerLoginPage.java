@@ -25,7 +25,10 @@ public class CustomerLoginPage extends BaseTestReport {
     WebElement login;
 
 
+
+
     public void customerLogin(){
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         join.click();
         login.click();
 
