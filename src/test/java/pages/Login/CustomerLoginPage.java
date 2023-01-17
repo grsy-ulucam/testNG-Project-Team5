@@ -15,8 +15,6 @@ public class CustomerLoginPage extends BaseTestReport {
 
     public CustomerLoginPage(){
 
-
-
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
@@ -27,6 +25,12 @@ public class CustomerLoginPage extends BaseTestReport {
     WebElement login;
 
 
+
+    public void customerLogin(){
+        join.click();
+        login.click();
+
+
     public void customerLogin() throws InterruptedException {
 
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
@@ -34,6 +38,7 @@ public class CustomerLoginPage extends BaseTestReport {
         join.click();
 
         login.click();
+
 
 
     }

@@ -8,6 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import org.testng.Assert;
+
+
 import utilities.BaseTestReport;
 import utilities.Driver;
 
@@ -44,6 +47,12 @@ public class SellerLoginPage extends BaseTestReport {
         wait.until(ExpectedConditions.urlToBe("https://admin-pickbazar-rest.vercel.app/login"));
 
         wait.until(ExpectedConditions.elementToBeClickable(login2)).click();
+
+       Assert.fail();
+
+
+        wait.until(ExpectedConditions.elementToBeClickable(login2)).click();
+
 
 
     }
