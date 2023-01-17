@@ -42,7 +42,6 @@ public class AllCategories  {
     private WebElement bakery;
 
 
-
     public void visibility(){
         vegetables.isDisplayed();
         snacks.isDisplayed();

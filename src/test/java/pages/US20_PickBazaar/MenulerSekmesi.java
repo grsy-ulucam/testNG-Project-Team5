@@ -9,17 +9,27 @@ import utilities.Driver;
 public class MenulerSekmesi extends BaseTestReport {
 
     public MenulerSekmesi() {
+
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
     @FindBy(className = "whitespace-nowrap")
     private WebElement grocery;
+
     @FindBy(partialLinkText = "Daily Needs")
     private WebElement dailyNeeds;
 
+
     public void DailyNeedsClisck(){
+
         grocery.click();
         dailyNeeds.click();
     }
+
+
+
+
+
+
 
 }
