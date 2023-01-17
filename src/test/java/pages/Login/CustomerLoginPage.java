@@ -26,13 +26,20 @@ public class CustomerLoginPage extends BaseTestReport {
 
 
 
-
-
-
     public void customerLogin(){
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         join.click();
         login.click();
+
+
+    public void customerLogin() throws InterruptedException {
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+
+        join.click();
+
+        login.click();
+
+
 
     }
 }

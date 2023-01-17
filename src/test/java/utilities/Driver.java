@@ -4,11 +4,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import java.time.Duration;
 
 public class Driver {
-
 
     private static WebDriver driver;
 
@@ -19,7 +21,7 @@ public class Driver {
     public static WebDriver getDriver(){
 
         if(driver == null){
-            String browser = ConfigReader.getProperty("browser");
+             String browser = ConfigReader.getProperty("browser");
             switch (browser){
 
                 case "chrome":
@@ -40,12 +42,14 @@ public class Driver {
         return driver;
     }
 
-
     public static void closeDriver(){
         if(driver != null){
+
             driver.quit();
             driver = null;
+
         }
     }
+
     }
 
