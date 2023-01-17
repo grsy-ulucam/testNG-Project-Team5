@@ -27,6 +27,8 @@ public class CustomerLoginPage extends BaseTestReport {
 
 
 
+
+
     public void customerLogin(){
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         join.click();
