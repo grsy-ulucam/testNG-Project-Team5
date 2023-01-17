@@ -14,7 +14,6 @@ import org.testng.Assert;
 import utilities.BaseTestReport;
 import utilities.Driver;
 
-
 import java.time.Duration;
 
 public class SellerLoginPage extends BaseTestReport {
