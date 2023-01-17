@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.BaseTestReport;
 import utilities.Driver;
 
-
 import java.time.Duration;
 
 public class SellerLoginPage extends BaseTestReport {
