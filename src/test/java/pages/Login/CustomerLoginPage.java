@@ -24,7 +24,6 @@ public class CustomerLoginPage extends BaseTestReport {
     @FindBy(xpath = "//button[text()='Login']")
     WebElement login;
 
-
     public void customerLogin() {
 
             WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
@@ -35,4 +34,6 @@ public class CustomerLoginPage extends BaseTestReport {
 
 
         }
+
+
     }
