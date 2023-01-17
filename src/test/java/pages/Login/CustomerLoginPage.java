@@ -27,8 +27,8 @@ public class CustomerLoginPage extends BaseTestReport {
 
 
     public void customerLogin(){
-        join.click();
-        login.click();
+       // join.click();
+       // login.click();
 
 
     public void customerLogin() throws InterruptedException {
