@@ -18,12 +18,18 @@ public class MenulerSekmesi extends BaseTestReport {
 
     @FindBy(partialLinkText = "Daily Needs")
     private WebElement dailyNeeds;
+    @FindBy(partialLinkText = "Bags")
+    private WebElement bags;
 
 
     public void DailyNeedsClisck(){
 
         grocery.click();
         dailyNeeds.click();
+    }
+    public void bagsClick(){
+        grocery.click();
+        bags.click();
     }
 
 

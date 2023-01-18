@@ -48,10 +48,4 @@ public class BaseCrossBrowserTest {
         driver.quit();
 
     }
-
-
-
 }
-
-
-
