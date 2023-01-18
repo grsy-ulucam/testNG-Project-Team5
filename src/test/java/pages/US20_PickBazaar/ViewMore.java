@@ -13,28 +13,28 @@ public class ViewMore {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(tagName = "h3")
+    @FindBy(xpath = "(//button[.='View More'])[1]")
     private WebElement vegetables;
 
-    @FindBy(tagName = "h3")
+    @FindBy(xpath = "(//button[.='View More'])[2]")
     private WebElement snacks;
 
-    @FindBy(tagName = "h3")
+    @FindBy(xpath = "(//button[.='View More'])[3]")
     private WebElement ricePulse;
 
-    @FindBy(tagName = "h3")
+    @FindBy(xpath = "(//button[.='View More'])[4]")
     private WebElement meat;
 
-    @FindBy(tagName = "h3")
+    @FindBy(xpath = "(//button[.='View More'])[5]")
     private WebElement fruits;
 
-    @FindBy(tagName = "h3")
+    @FindBy(xpath = "(//button[.='View More'])[6]")
     private WebElement fish;
 
-    @FindBy(tagName = "h3")
+    @FindBy(xpath = "(//button[.='View More'])[7]")
     private WebElement dairyEggs;
 
-    @FindBy(tagName = "h3")
+    @FindBy(xpath = "(//button[.='View More'])[8]")
     private WebElement bakery;
 
     public void viewMoree() throws InterruptedException {
@@ -47,6 +47,28 @@ public class ViewMore {
         actions.moveToElement(vegetables).perform();
         Assert.assertTrue(vegetables.isDisplayed());
         Thread.sleep(5000);
+        actions.moveToElement(snacks).perform();
+        Assert.assertTrue(snacks.isDisplayed());
+
+        actions.moveToElement(ricePulse).perform();
+        Assert.assertTrue(ricePulse.isDisplayed());
+
+        actions.moveToElement(meat).perform();
+        Assert.assertTrue(meat.isDisplayed());
+
+        actions.moveToElement(fruits).perform();
+        Assert.assertTrue(fruits.isDisplayed());
+
+        actions.moveToElement(fish).perform();
+        Assert.assertTrue(fish.isDisplayed());
+
+        actions.moveToElement(dairyEggs).perform();
+        Assert.assertTrue(dairyEggs.isDisplayed());
+
+        actions.moveToElement(bakery).perform();
+        Assert.assertTrue(bakery.isDisplayed());
+
+
 
     }
 }

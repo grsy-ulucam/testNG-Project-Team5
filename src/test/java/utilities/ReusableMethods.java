@@ -11,14 +11,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 public class ReusableMethods {
 
-    public static String getScreenshot(WebDriver driver, String name) throws IOException {
+    public static String getScreenshot() throws IOException {
 
         // Screenshot dosya ismi icin suanki tarihi string olarak aliyoruz
         String date = formatCurrentDate("yyyyMMddhhmmss");
 
         // Screenshot alip file objesine atiyoruz
-        File source = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File source = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.FILE);
 
+        String name="2023";
         // Kaydedilecek dosyanin yolunu belirliyoruz
         String target = System.getProperty("user.dir") + "\\test-output\\Screenshots\\" + name + date + ".png";
 

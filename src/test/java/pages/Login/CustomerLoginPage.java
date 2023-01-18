@@ -24,9 +24,9 @@ public class CustomerLoginPage extends BaseTestReport {
     @FindBy(xpath = "//button[text()='Login']")
     WebElement login;
 
-
     public void customerLogin() {
 
+        Driver.getDriver().get("https://shop-pickbazar-rest.vercel.app");
             WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
 
             join.click();
@@ -35,4 +35,6 @@ public class CustomerLoginPage extends BaseTestReport {
 
 
         }
+
+
     }
