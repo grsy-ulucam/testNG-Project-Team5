@@ -100,6 +100,10 @@ public class Bags {
         balenciaga.click();
     }
 
+    public void clickgucciHandbag() {
+        gucciHandbag.click();
+    }
+
     public void clickArmaniHandbag() {
         armaniHandbag.click();
     }

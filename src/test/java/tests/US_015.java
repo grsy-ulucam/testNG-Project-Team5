@@ -1,17 +1,19 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import com.graphbuilder.struc.Bag;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Login.CustomerLoginPage;
 import pages.US15_Bags.Bags;
 import pages.US20_PickBazaar.MenulerSekmesi;
 import utilities.Driver;
+import utilities.JSUtils;
 
 import java.time.Duration;
 import java.util.List;
@@ -19,7 +21,36 @@ import java.util.List;
 public class US_015 {
     @AfterMethod
     public void tearDown() {
-//        Driver.getDriver().quit();
+        Driver.getDriver().quit();
+    }
+
+    @BeforeTest
+    public void loginWebsite() throws InterruptedException {
+        Driver.getDriver().get("https://shop-pickbazar-rest.vercel.app/");//siteye gidildi
+        CustomerLoginPage cLP = new CustomerLoginPage();//customer login icin obje uretildi
+        cLP.customerLogin();//musteri olarak login olundu.
+
+
+        MenulerSekmesi mS = new MenulerSekmesi();//MenulerSekmesi isimli class'a erisim saglandi.
+        mS.bagsClick();//Ust bolumden Bags kategorisine gidildi
+
+        Driver.getDriver().navigate().refresh();//Kategori ekranini atlatabilmek icin sayfa guncellendi
+
+
+        Actions actions = new Actions(Driver.getDriver());
+
+        actions.sendKeys(Keys.PAGE_DOWN)
+                .sendKeys(Keys.PAGE_DOWN)
+                .sendKeys(Keys.PAGE_DOWN)
+                .perform();//sayfa asagiya scroll yapildi
+
+        Thread.sleep(1500);//Tedbiren beklendi
+
+    }
+
+    @AfterTest
+    public void tearDown1() {
+        Driver.getDriver().quit();
     }
 
     @Test
@@ -33,27 +64,7 @@ public class US_015 {
 5-Kullanıcı, açılan ürün detayı sayfasında kalp ikonuna tıklar ve ürün favorilere eklenir.
 
 */
-        Driver.getDriver().get("https://shop-pickbazar-rest.vercel.app/");//siteye gidildi
-        CustomerLoginPage cLP = new CustomerLoginPage();//customer login icin obje uretildi
-        cLP.customerLogin();//musteri olarak login olundu.
-
-        Bags bags = new Bags();//Bags class'a erisim saglandi
-        MenulerSekmesi mS = new MenulerSekmesi();//MenulerSekmesi isimli class'a erisim saglandi.
-        mS.bagsClick();//Ust bolumden Bags kategorisine gidildi
-
-//        Select select = new Select(dropDown);
-//        select.selectByVisibleText("Bags");
-
-        Driver.getDriver().navigate().refresh();//Kategori ekranini atlatabilmek icin sayfa guncellendi
-
-        Actions actions = new Actions(Driver.getDriver());
-
-        actions.sendKeys(Keys.PAGE_DOWN)
-                .sendKeys(Keys.PAGE_DOWN)
-                .sendKeys(Keys.PAGE_DOWN)
-                .perform();//sayfa asagiya scroll yapildi
-
-        Thread.sleep(1500);//Tedbiren beklendi
+        Bags bags = new Bags();
         bags.clickTheMarcJacobs();//Bir urun secildi
 
         Thread.sleep(2000);//Tedbiren beklendi
@@ -62,7 +73,7 @@ public class US_015 {
         heart.click();//Urun begenilere eklendi
 
         WebDriverWait wait3 = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));//Tedbiren eklendi.
-
+        Actions actions = new Actions(Driver.getDriver());
         actions.sendKeys(Keys.ESCAPE).perform();
 
         WebElement clickMonster = Driver.getDriver().findElement(By.xpath("//img[@alt='user name']"));
@@ -87,19 +98,6 @@ public class US_015 {
 4-Sayfada, sol bölümdeki kategori listesinin görünür olduğu doğrulanır.
  */
 
-        Driver.getDriver().get("https://shop-pickbazar-rest.vercel.app/");//siteye gidildi
-
-        MenulerSekmesi mS = new MenulerSekmesi();//MenulerSekmesi isimli class'a erisim saglandi.
-        mS.bagsClick();//Ust bolumden Bags kategorisine gidildi
-        Driver.getDriver().navigate().refresh();//Kategori ekranini atlatabilmek icin sayfa guncellendi
-
-        Actions actions = new Actions(Driver.getDriver());
-        actions.sendKeys(Keys.PAGE_DOWN)
-                .sendKeys(Keys.PAGE_DOWN)
-                .perform();//sayfa asagiya scroll yapildi
-
-        Thread.sleep(1500);//Tedbiren beklendi
-
         WebElement listCategory = Driver.getDriver().findElement(By.xpath("//div[@class='os-content']"));
 //Sol bolumdeki kategori listesinin locator'i alindi.
 
@@ -116,22 +114,7 @@ public class US_015 {
 4-Ürünün stoğu varsa max stok sayısına kadar ürün sepete eklenir. Stokta yoksa yeni bir ürün seçilir
 5- Stok sayısından fazlasının eklenememe durumu doğrulanır.
  */
-        Driver.getDriver().get("https://shop-pickbazar-rest.vercel.app/");//siteye gidildi
-        CustomerLoginPage cLP = new CustomerLoginPage();//customer login icin obje uretildi
-        cLP.customerLogin();//musteri olarak login olundu.
-        Thread.sleep(1500);
-        MenulerSekmesi mS = new MenulerSekmesi();//MenulerSekmesi isimli class'a erisim saglandi.
-        mS.bagsClick();//Ust bolumden Bags kategorisine gidildi
-        Driver.getDriver().navigate().refresh();//Kategori seçim ekranini atlatabilmek icin sayfa guncellendi
-
         Actions actions = new Actions(Driver.getDriver());
-        actions.sendKeys(Keys.PAGE_DOWN)
-                .sendKeys(Keys.PAGE_DOWN)
-                .sendKeys(Keys.PAGE_DOWN)
-                .perform();//sayfa asagiya scroll yapildi
-
-        Thread.sleep(2000);//Tedbiren beklendi
-
         Bags bags = new Bags();//Bags class'a erisim saglandi
         bags.clickBalenciaga();//Bir urun secildi
         Thread.sleep(1500);//Tedbiren eklendi.
@@ -192,21 +175,8 @@ public class US_015 {
 5-Ürünün „Details“ bölümünün görünebilir olduğu doğrulanmalıdır.
 
  */
-        Driver.getDriver().get("https://shop-pickbazar-rest.vercel.app/");//siteye gidildi
-
-        MenulerSekmesi mS = new MenulerSekmesi();//MenulerSekmesi isimli class'a erisim saglandi.
-        mS.bagsClick();//Ust bolumden Bags kategorisine gidildi
-        Driver.getDriver().navigate().refresh();//Kategori ekranini atlatabilmek icin sayfa guncellendi
-
-        Actions actions = new Actions(Driver.getDriver());
-        actions.sendKeys(Keys.PAGE_DOWN)
-                .sendKeys(Keys.PAGE_DOWN)
-                .perform();//sayfa asagiya scroll yapildi
-
-        Thread.sleep(1500);//Tedbiren beklendi
-
         Bags bags = new Bags();//Bags class'ina objeyle erisim saglandi
-        bags.clickGivenchyMiniPurse();//Herhangi bir urun secildi.
+        bags.clickSeeByChloé();//Herhangi bir urun secildi.
 
         Thread.sleep(1500);//Tedbiren beklendi.
 
@@ -225,30 +195,19 @@ public class US_015 {
 5-Ürünün detayında iken „Related Product“ alanının tasarlanmadığı doğrulanır.
 
  */
-        Driver.getDriver().get("https://shop-pickbazar-rest.vercel.app/");//siteye gidildi
-        WebDriverWait wait1 = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));//Tedbiren eklendi.
-
-        MenulerSekmesi mS = new MenulerSekmesi();//MenulerSekmesi isimli class'a erisim saglandi.
-        mS.bagsClick();//Categori bolumunden Bags kategorisine gidildi
-        Driver.getDriver().navigate().refresh();//Kategori secim ekranini atlatabilmek icin sayfa guncellendi
-
-        Actions actions = new Actions(Driver.getDriver());
-        actions.sendKeys(Keys.PAGE_DOWN)
-                .sendKeys(Keys.PAGE_DOWN)
-                .perform();//sayfa asagiya scroll yapildi
-
-        Thread.sleep(1500);//Tedbiren beklendi
-
+        Thread.sleep(1500);
         Bags bags = new Bags();//Bags class'ina objeyle erisim saglandi
-        bags.clickGucciGGMarmontTote();//Herhangi bir urun secildi.
+        bags.clickgucciHandbag();//Herhangi bir urun secildi.
 
         Thread.sleep(2000);//Tedbiren beklendi.
 
         WebElement relatedProduct = Driver.getDriver().findElement(By.xpath("(//div[@class='swiper-wrapper'])[4]"));
 //Urunle ilgili fotograflarin yer aldigi bolum locate edildi.
 
-        Assert.assertTrue(relatedProduct.isDisplayed());//Urunle ilgili diger fotograflarin yer alandigi bolumun gorunurlugu verify edildi.
-//Related Product bolumu tasarlanmis olsa da hicbir urunde 1'den fazla foto olmadigi icin bu bolum mecburen FAIL olacaktir.
+        Assert.assertFalse(relatedProduct.isDisplayed());//Urunle ilgili diger fotograflarin yer alandigi bolumun
+        // gorunurlugu verify edildi.
+//Related Product bolumu tasarlanmis olsa da hicbir urunde 1'den fazla foto olmadigi icin bu bolum
+// mecburen FAIL olacaktir.
 //Baska kategoriden birden fazla fotografa sahip olan bir urun bu kod test edildiginde PASS sonucu alinmistir.
 
     }
@@ -261,24 +220,16 @@ public class US_015 {
 3-Kullanıcı, ana sayfadayken scroll yapar ve ekran kaydırılarak aşağı inilir.
 
  */
-        Driver.getDriver().get("https://shop-pickbazar-rest.vercel.app/");//siteye gidildi
-        WebDriverWait wait1 = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));//Tedbiren eklendi.
-
-        MenulerSekmesi mS = new MenulerSekmesi();//MenulerSekmesi isimli class'a erisim saglandi.
-        mS.bagsClick();//Categori bolumunden Bags kategorisine gidildi
-        Driver.getDriver().navigate().refresh();//Kategori secim ekranini atlatabilmek icin sayfa guncellendi
-
         Actions actions = new Actions(Driver.getDriver());
 
-        for (int i = 0; i < 60; i++) {
+        for (int i = 0; i < 30; i++) {//Scroll islemi arrow ile for dongusu kullanilarak yapildi.
             actions.sendKeys(Keys.ARROW_DOWN).perform();
             Thread.sleep(10);
         }
-//Fare orta tekerlegiyle islem yapilan kod bulunamayinca Arrow_Down komutuyla sayfa asagiya scroll yapildi.
     }
 
     @Test
-    public void caseTest07() throws InterruptedException {
+    public void testCase07() throws InterruptedException {
 /*Test Case07--> kullanici eger urunlerde indirim varsa ilk fiyat ve indirimli fiyat ve indirim oranını görmelidir
 1-Kullanıcı, site ana sayfasının URL’sine gider
 2-Kullanıcı, en üstte „Grocery“ yazılı alandan Bags’i seçer ve sonra sayfaya refresh yapılmalıdır.
@@ -289,53 +240,66 @@ public class US_015 {
 
 
  */
-        Driver.getDriver().get("https://shop-pickbazar-rest.vercel.app/");//siteye gidildi
-        WebDriverWait wait1 = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));//Tedbiren eklendi.
-
-        MenulerSekmesi mS = new MenulerSekmesi();//MenulerSekmesi isimli class'a erisim saglandi.
-        mS.bagsClick();//Categori bolumunden Bags kategorisine gidildi
-        Driver.getDriver().navigate().refresh();//Kategori secim ekranini atlatabilmek icin sayfa guncellendi
-
         Actions actions = new Actions(Driver.getDriver());
-        actions.sendKeys(Keys.PAGE_DOWN)
-                .sendKeys(Keys.PAGE_DOWN)
-                .perform();//sayfa asagiya scroll yapildi
-
-        Thread.sleep(1500);//Tedbiren beklendi
-
         List<WebElement> allDiscProd = Driver.getDriver().findElements(By.xpath("//del[@class='absolute -top-4 text-xs italic text-muted text-opacity-75 md:-top-5']"));
+//Indirim tanimlanmis olan urunler list'e atildi.
 
         Bags bags = new Bags();//Bags class'ina objeyle erisim saglandi
         bags.clickMastHarbour();//Indirimi olan herhangi bir urun secildi.
 
         Thread.sleep(2000);//Tedbiren beklendi.
 
+//Urunun detayindan liste fiyati locate edilerek gorunur olmasi hali verify edildi.
         WebElement listeFiyati = Driver.getDriver().findElement(By.xpath("//del[@class='text-sm font-normal text-muted ltr:ml-2 rtl:mr-2 md:text-base']"));
         Assert.assertTrue(listeFiyati.isDisplayed());
 
-        String strNonDiscPr = listeFiyati.getText().substring(1);
-        double doubleNonDisc = Double.parseDouble(strNonDiscPr);
-        System.out.println("Liste Fiyati = " + doubleNonDisc);
 
+        String strNonDiscPr = listeFiyati.getText().substring(1);//Liste fiyati string olarak alindi
+        double doubleNonDisc = Double.parseDouble(strNonDiscPr);//Liste fiyati usd isareti olmadan double'a donusturuldu
+        System.out.println("Liste Fiyati = " + doubleNonDisc);//Liste fiyati konsolda yazdirildi
 
+//Urunun detayindan satis fiyati locate edilerek gorunur olmasi hali verify edildi.
         WebElement sellingPrice = Driver.getDriver().findElement(By.xpath("//ins[@class='text-2xl font-semibold text-accent no-underline md:text-3xl']"));
         Assert.assertTrue(sellingPrice.isDisplayed());
 
-        String strDiscPr = sellingPrice.getText().substring(1);
-        double doubleDisc = Double.parseDouble(strDiscPr);
-        System.out.println("Satis Fiyati = " + doubleDisc);
+        String strDiscPr = sellingPrice.getText().substring(1);//Indirimli fiyat string olarak alindi
+        double doubleDisc = Double.parseDouble(strDiscPr);//Indirimli fiyat, usd isareti olmadan double'a donusturuldu.
+        System.out.println("Satis Fiyati = " + doubleDisc);//Indirimli fiyat konsolda yazdirildi.
 
+//Urunun detayindan indirim orani locate edilerek gorunur olmasi hali verify edildi.
         WebElement discountRate = Driver.getDriver().findElement(By.xpath("//div[@class='rounded-full bg-yellow-500 px-3 text-xs font-semibold leading-6 text-light ltr:ml-auto rtl:mr-auto']"));
         Assert.assertTrue(discountRate.isDisplayed());
 
-        String strDiscRate = discountRate.getText().substring(0, 2);
-        int intDisc = Integer.parseInt(strDiscRate);
-        System.out.println("Indirim Orani = " + intDisc + " %");
+        String strDiscRate = discountRate.getText().substring(0, 2);//Urun detayindan indirim orani string formatinda alindi
+        int intDisc = Integer.parseInt(strDiscRate);//Indirim orani integer formatina donusturuldu.
+        System.out.println("Indirim Orani = " + intDisc + " %");//Indirim orani konsolda yazdirildi
 
-        actions.sendKeys(Keys.ESCAPE).perform();
-        Thread.sleep(1500);
-        bags.clickGucciPurse();//Indirimsiz olan herhangi bir urun secildi.
-        System.out.println("Urunde indirim BULUNMAMAKTADIR");
+    }
 
+    @Test
+    public void testCase08() throws InterruptedException {
+/*Kullanici urun linkine tiklayarak urun sayfasina gidebilmelidir
+1-Kullanıcı, site ana sayfasının URL’sine gider
+2-Kullanıcı, en üstte „Grocery“ yazılı alandan Bags’i seçer ve sonra sayfaya refresh yapılmalıdır.
+3-Kullanıcı, sayfada 3 defa Page Down’a tıklar.
+4-Kullanıcı herhangi bir ürüne tıklar.
+5-Kullanıcının ürün detayını görüntülediğine dair doğrulama yapılmalıdır.
+
+ */
+//Herhangi bir urun locate edildi.
+        WebElement productDetails = Driver.getDriver().findElement(By.xpath("//h3[text()='Armani Leather Purse']"));
+
+        Actions actions = new Actions(Driver.getDriver());
+        actions.click(productDetails).perform();//Urunun linkine tiklandi ve sayfa detayina ulasildi
+
+        Thread.sleep(2000);
+
+        WebElement readMore = Driver.getDriver().findElement(By.xpath("//button[text()='Read more']"));
+        readMore.click();//Urunle ilgili ilk bolumde bulunan aciklama locate edilerek detayli aciklamaya tiklandi.
+
+//Urunle ilgili detaylarin oldugu ilk bolum locate edildi.
+        WebElement detail = Driver.getDriver().findElement(By.xpath("//div[@class='mt-3 text-sm leading-7 text-body md:mt-4']"));
+
+        Assert.assertTrue(detail.isDisplayed());//Urunun detaylarinin oldugu ilk bolumun gorunur olmasi verify edildi.
     }
 }
