@@ -105,7 +105,7 @@ public class US_015 extends BaseTestReport {
 //        extentTest = extentReports.createTest("caseTest03");//Bu kod satiri test raporu olusturmak icin yazildi.
 
         bags.methodBalenciaga();//Stogu olan bir urun secildi.
-        bags.FugtBisEndeHinzu();//Urun sepete eklenerek stok sayisi kadar adedi arttirilarak kod dogrulandi
+        bags.fugtBisEndeHinzu();//Urun sepete eklenerek stok sayisi kadar adedi arttirilarak kod dogrulandi
     }
 
 

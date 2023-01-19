@@ -469,7 +469,7 @@ public class Bags {
 
     }
 
-    public void FugtBisEndeHinzu() {
+    public void fugtBisEndeHinzu() {
         addShoppingCart.click();//Urun, "Add To Shopping Cart" butonuyla sepete eklendi
 
         String stringStock = stok.getText().substring(0, 2);//Urunden kac tane oldugu bilgisi String olarak alindi
