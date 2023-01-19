@@ -7,7 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.Login.CustomerLoginPage;
-import pages.homepageClass.HomepageClass;
+import pages.Login.HomePage;
 
 import utilities.Driver;
 
@@ -46,8 +46,8 @@ public class US__013 {
     @Test
     public void checkoutclick() {
 
-        HomepageClass hm = new HomepageClass();
-        hm.monsterBtn();
+        HomePage hm = new HomePage();
+//        hm.monsterBtn();
 
         waitt();
 

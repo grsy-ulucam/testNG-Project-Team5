@@ -5,21 +5,30 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Login.CustomerLoginPage;
-import pages.US15_Bags.Bags;
+import pages.US15_16_Bags.Bags;
 import pages.US20_PickBazaar.MenulerSekmesi;
+import utilities.BaseTestReport;
 import utilities.Driver;
 
-public class US_016 {
+/*
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.visibilityOf(plus)).click();
+*/
+
+
+public class US_016 extends BaseTestReport {
     @AfterMethod
     public void tearDown() {
 //        Driver.getDriver().quit();
     }
-
+}
+/*
     @BeforeTest
     public void loginWebsite() throws InterruptedException {
         Driver.getDriver().get("https://shop-pickbazar-rest.vercel.app/");//siteye gidildi
@@ -50,7 +59,7 @@ public class US_016 {
     }
 
     @Test
-    public void testCase01() throws InterruptedException {
+    public void testCase01(ITestContext context) throws InterruptedException {
 /*Sayfada iken secilen urun miktari degistirilmelidir
 1-Kullanıcı, site ana sayfasının URL’sine gider
 2-Kullanıcı, sayfaya müşteri statüsünde login olur ve Categories tıklar.
@@ -59,6 +68,8 @@ public class US_016 {
 5-Sayfada herhangi bir üründe önce „Cart“a tıklanmalı sonra da ürün sayısı artırılmalıdır.
 
  */
+/*
+        extentTest = extentReports.createTest("testCase01");
         Bags bags = new Bags();
         bags.clickBalenciaga();//Herhangi bir urun secildi.
 
@@ -92,7 +103,7 @@ public class US_016 {
     }
 
     @Test
-    public void test02() throws InterruptedException {
+    public void testCase02(ITestContext context) throws InterruptedException {
 /*Sepete gittiginde urun miktari degistirilmelidir
 1-Kullanıcı, site ana sayfasının URL’sine gider
 2-Kullanıcı, sayfaya müşteri statüsünde login olur ve Categories tıklar.
@@ -103,6 +114,8 @@ public class US_016 {
 7- Ürünün sepete eklenen miktarıyla güncellenen miktarının sıfırdan büyük olduğu doğrulanmalıdır.
 
  */
+/*
+        extentTest=extentReports.createTest("testCase02");
         Bags bags = new Bags();
         bags.clickBalenciaga();
 
@@ -136,4 +149,5 @@ public class US_016 {
         }
 
     }
-}
+
+ */
