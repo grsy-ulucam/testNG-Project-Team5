@@ -1,9 +1,12 @@
 package tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -11,51 +14,49 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Login.CustomerLoginPage;
+import pages.Login.HomePage;
 import pages.US15_16_Bags.Bags;
 import pages.US20_PickBazaar.MenulerSekmesi;
 import utilities.BaseTestReport;
 import utilities.Driver;
 
-/*
-    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.visibilityOf(plus)).click();
-*/
+import java.time.Duration;
 
 
 public class US_016 extends BaseTestReport {
-    @AfterMethod
-    public void tearDown() {
-//        Driver.getDriver().quit();
-    }
-}
-/*
+
+    public Actions actions = new Actions(Driver.getDriver());//Actions aktiflestirildi.
+    public Bags bags = new Bags();//Bags class'ina erisim saglandi
+    public HomePage hP = new HomePage();//HomePage class'ina erisim saglandi
+
     @BeforeTest
     public void loginWebsite() throws InterruptedException {
         Driver.getDriver().get("https://shop-pickbazar-rest.vercel.app/");//siteye gidildi
         CustomerLoginPage cLP = new CustomerLoginPage();//customer login icin obje uretildi
         cLP.customerLogin();//musteri olarak login olundu.
 
+        WebDriverWait wait1 = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait1.until(ExpectedConditions.visibilityOf(hP.menu)).click();
+//Ustteki kategori sekmesi gorunene kadar(max 10sn) beklendi gorununce de tiklandi.
 
-        MenulerSekmesi mS = new MenulerSekmesi();//MenulerSekmesi isimli class'a erisim saglandi.
-        mS.bagsClick();//Ust bolumden Bags kategorisine gidildi
+        WebDriverWait wait2 = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait2.until(ExpectedConditions.visibilityOf(hP.bags)).click();
+//Kategorilerden Bags gorunene kadar (max 10sn) beklendi, gorununce de tiklandi.
 
         Driver.getDriver().navigate().refresh();//Kategori ekranini atlatabilmek icin sayfa guncellendi
+//Scroll islemi yapildi.
+        JavascriptExecutor jsexecutor = ((JavascriptExecutor) Driver.getDriver());
+        jsexecutor.executeScript("window.scrollBy(0,1500)");
+    }
 
-
-        Actions actions = new Actions(Driver.getDriver());
-
-        actions.sendKeys(Keys.PAGE_DOWN)
-                .sendKeys(Keys.PAGE_DOWN)
-                .sendKeys(Keys.PAGE_DOWN)
-                .perform();//sayfa asagiya scroll yapildi
-
-        Thread.sleep(1500);//Tedbiren beklendi
-
+    @AfterMethod
+    public void tearDown() {
+//        Driver.getDriver().quit();
     }
 
     @AfterTest
     public void tearDown1() {
-        //   Driver.getDriver().quit();
+//   Driver.getDriver().quit();
     }
 
     @Test
@@ -68,38 +69,10 @@ public class US_016 extends BaseTestReport {
 5-Sayfada herhangi bir üründe önce „Cart“a tıklanmalı sonra da ürün sayısı artırılmalıdır.
 
  */
-/*
-        extentTest = extentReports.createTest("testCase01");
-        Bags bags = new Bags();
-        bags.clickBalenciaga();//Herhangi bir urun secildi.
+        //       extentTest = extentReports.createTest("testCase01");
 
-        Thread.sleep(2000);//Tedbiren eklendi
-
-        WebElement addCart = Driver.getDriver().findElement(By.xpath("(//span[text()='Add To Shopping Cart'])[2]"));
-        addCart.click();//Urun sepete eklendi
-
-        WebElement clickPlus = Driver.getDriver().findElement(By.xpath("(//button[@class='cursor-pointer p-2 transition-colors duration-200 hover:bg-accent-hover focus:outline-none px-5'])[4]"));
-//Sepete eklenen urunde + veya - isaretiyle islem yapilabileceginden arti butonunun locator'u alindi.
-        clickPlus.click();//Urune 1 adet eklendi.
-        clickPlus.click();//Urune 1 adet eklendi.
-        clickPlus.click();//Urune 1 adet eklendi.
-
-//Urun sayisi locate edildi.
-        WebElement amount = Driver.getDriver().findElement(By.xpath("(//div[@class='flex flex-1 items-center justify-center px-3 text-sm font-semibold'])[3]"));
-        String strAmount = amount.getText();//Urun miktari string formatinda alindi.
-        int intAmount = Integer.parseInt(strAmount);//string olan urun miktari int'e donusturuldu.
-        System.out.println("intAmount = " + intAmount);//Miktar konsolda yazdirildi
-
-//Sepete eklenen urunde + veya - isaretiyle islem yapilabileceginden eksi butonunun locator'u alindi.
-        WebElement clickMinus = Driver.getDriver().findElement(By.xpath("(//button[@class='cursor-pointer p-2 transition-colors duration-200 hover:bg-accent-hover focus:outline-none px-5'])[3]"));
-        clickMinus.click();//Urunden 1 adet azaltildi.
-
-//Bu kontrolde; int urun miktari 1'e esit oldugu durumda urun miktarinin degistirilmedigi varsayilarak
-// testin fail olacagi kabul edilmistir. Sepetteki urun miktari sayisi 1 harici ise
-// sepette degisiklik yapildigi icin test pass olarak sonuclanmistir.
-        if (intAmount == 1) {
-            Assert.fail();
-        }
+        bags.methodBalenciaga();//Herhangi bir urun secildi.
+        bags.miktarGuncelle();// Urun detay sayfasindaki miktar guncelleme islemlerinin methodudur.
     }
 
     @Test
@@ -114,40 +87,11 @@ public class US_016 extends BaseTestReport {
 7- Ürünün sepete eklenen miktarıyla güncellenen miktarının sıfırdan büyük olduğu doğrulanmalıdır.
 
  */
-/*
-        extentTest=extentReports.createTest("testCase02");
-        Bags bags = new Bags();
-        bags.clickBalenciaga();
 
-        WebElement addCart = Driver.getDriver().findElement(By.xpath("(//span[text()='Add To Shopping Cart'])[2]"));
-        addCart.click();//Urun sepete eklendi
+//        extentTest=extentReports.createTest("testCase02");
 
-        Actions actions = new Actions(Driver.getDriver());
-        actions.sendKeys(Keys.ESCAPE).perform();//Urun detayindan --> Bags kategorisinin genel gorundugu sayfaya geri donuldu.
-
-        WebElement cart = Driver.getDriver().findElement(By.xpath("//span[@class='flex pb-0.5']"));
-        cart.click();//Sepete tiklandi
-
-        Thread.sleep(1500);//Tedbiren beklendi.
-
-//Sepete eklenen urunde + veya - isaretiyle islem yapilabileceginden arti butonunun locator'u alindi.
-        WebElement cartPlus = Driver.getDriver().findElement(By.xpath("(//button[@class='cursor-pointer p-2 transition-colors duration-200 hover:bg-accent-hover focus:outline-none hover:!bg-gray-100'])[2]"));
-        cartPlus.click();//Urun 1 adet artirildi.
-        cartPlus.click();//Urun 1 adet artirildi.
-
-//Urunun sepette ne kadar oldugu bilgisi locate edildi.
-        WebElement amountCart = Driver.getDriver().findElement(By.xpath("//div[@class='flex flex-1 items-center justify-center px-3 text-sm font-semibold !px-0 text-heading']"));
-        String strAmountCart = amountCart.getText();//Urun miktari string formatinda alindi.
-        int intAmountCart = Integer.parseInt(strAmountCart);//String olan urun miktari integer'a donusturuldu.
-
-//Bu kontrolde; int urun miktari 1'e esit oldugu durumda urun miktarinin degistirilmedigi varsayilarak
-// testin fail olacagi kabul edilmistir. Sepetteki urun miktari sayisi 1 harici ise
-// sepette degisiklik yapildigi icin test pass olarak sonuclanmistir.
-
-        if (intAmountCart == 1) {
-            Assert.fail();
-        }
+        bags.methodSalvatoreFerragamo();//Bir urun secildi.
+        bags.refreshInCart();
 
     }
-
- */
+}
