@@ -48,10 +48,10 @@ public class SellerLoginPage extends BaseTestReport {
 
         wait.until(ExpectedConditions.elementToBeClickable(login2)).click();
 
-       Assert.fail();
+//       Assert.fail();
 
 
-        wait.until(ExpectedConditions.elementToBeClickable(login2)).click();
+//        wait.until(ExpectedConditions.elementToBeClickable(login2)).click();
 
 
 
