@@ -1,13 +1,9 @@
-package tests;
+package tests.Faruk;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -15,8 +11,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Login.CustomerLoginPage;
 import pages.Login.HomePage;
-import pages.US15_16_Bags.Bags;
-import pages.US20_PickBazaar.MenulerSekmesi;
+import pages.Faruk.Bags;
 import utilities.BaseTestReport;
 import utilities.Driver;
 
@@ -56,7 +51,7 @@ public class US_016 extends BaseTestReport {
 
     @AfterTest
     public void tearDown1() {
-//   Driver.getDriver().quit();
+   Driver.getDriver().quit();
     }
 
     @Test
@@ -69,7 +64,7 @@ public class US_016 extends BaseTestReport {
 5-Sayfada herhangi bir üründe önce „Cart“a tıklanmalı sonra da ürün sayısı artırılmalıdır.
 
  */
-        //       extentTest = extentReports.createTest("testCase01");
+        extentTest = extentReports.createTest("testCase01");
 
         bags.methodBalenciaga();//Herhangi bir urun secildi.
         bags.miktarGuncelle();// Urun detay sayfasindaki miktar guncelleme islemlerinin methodudur.
@@ -87,9 +82,7 @@ public class US_016 extends BaseTestReport {
 7- Ürünün sepete eklenen miktarıyla güncellenen miktarının sıfırdan büyük olduğu doğrulanmalıdır.
 
  */
-
-//        extentTest=extentReports.createTest("testCase02");
-
+        extentTest=extentReports.createTest("testCase02");
         bags.methodSalvatoreFerragamo();//Bir urun secildi.
         bags.refreshInCart();
 

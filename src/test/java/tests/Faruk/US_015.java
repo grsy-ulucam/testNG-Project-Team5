@@ -1,4 +1,4 @@
-package tests;
+package tests.Faruk;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -12,16 +12,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Login.CustomerLoginPage;
 import pages.Login.HomePage;
-import pages.US15_16_Bags.Bags;
-import pages.US20_PickBazaar.MenulerSekmesi;
+import pages.Faruk.Bags;
 import utilities.BaseTestReport;
 import utilities.Driver;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
 public class US_015 extends BaseTestReport {
 
@@ -51,7 +46,7 @@ public class US_015 extends BaseTestReport {
 
     @AfterTest
     public void tearDown1() {
-//        Driver.getDriver().quit();
+        Driver.getDriver().quit();
     }
 
     @AfterMethod
@@ -70,7 +65,7 @@ public class US_015 extends BaseTestReport {
 5-Kullanıcı, açılan ürün detayı sayfasında kalp ikonuna tıklar ve ürün favorilere eklenir.
 */
 
-//        extentTest = extentReports.createTest("testCase01");//Test raporu komutudur.
+        extentTest = extentReports.createTest("testCase01");//Test raporu komutudur.
         bags.addMyWishlistArmaniLeatherPurse();//myWishlists'e alinmak istenen urunun methodu cagirildi.
 
     }
@@ -85,7 +80,7 @@ public class US_015 extends BaseTestReport {
 4-Sayfada, sol bölümdeki kategori listesinin görünür olduğu doğrulanır.
  */
 
-//        extentTest = extentReports.createTest("testCase02");//Test raporu alinmasi icin yazilan komuttur.
+        extentTest = extentReports.createTest("testCase02");//Test raporu alinmasi icin yazilan komuttur.
 
         Assert.assertTrue(bags.listCategory.isDisplayed());//Locator'un gorunur olmasi durumu verify edildi.
     }
@@ -102,7 +97,7 @@ public class US_015 extends BaseTestReport {
 5- Stok sayısından fazlasının eklenememe durumu doğrulanır.
  */
 
-//        extentTest = extentReports.createTest("caseTest03");//Bu kod satiri test raporu olusturmak icin yazildi.
+        extentTest = extentReports.createTest("caseTest03");//Bu kod satiri test raporu olusturmak icin yazildi.
 
         bags.methodBalenciaga();//Stogu olan bir urun secildi.
         bags.fugtBisEndeHinzu();//Urun sepete eklenerek stok sayisi kadar adedi arttirilarak kod dogrulandi
@@ -119,7 +114,7 @@ public class US_015 extends BaseTestReport {
 5-Ürünün „Details“ bölümünün görünebilir olduğu doğrulanmalıdır.
 */
 
-//        extentTest = extentReports.createTest("testCase04");//Bu kod satiri test raporu olusturmak icin yazildi.
+        extentTest = extentReports.createTest("testCase04");//Bu kod satiri test raporu olusturmak icin yazildi.
 
         bags.methodSeeByChole();//Herhangi bir urun secildi.
         bags.showDetails();
@@ -136,7 +131,7 @@ public class US_015 extends BaseTestReport {
 5-Ürünün detayında iken „Related Product“ alanının tasarlanmadığı doğrulanır.
 
  */
-//        extentTest = extentReports.createTest("testCase05");//Bu kod satiri test raporu olusturmak icin yazildi.
+        extentTest = extentReports.createTest("testCase05");//Bu kod satiri test raporu olusturmak icin yazildi.
 
         bags.methodGucciHandbag();//Herhangi bir urun secildi.
         bags.relatedProduct();
@@ -150,7 +145,7 @@ public class US_015 extends BaseTestReport {
 3-Kullanıcı, ana sayfadayken scroll yapar ve ekran kaydırılarak aşağı inilir.
 
  */
-//        extentTest = extentReports.createTest("testCase06");//Bu kod satiri test raporu olusturmak icin yazildi.
+        extentTest = extentReports.createTest("testCase06");//Bu kod satiri test raporu olusturmak icin yazildi.
         bags.scroll();
     }
 
@@ -166,7 +161,7 @@ public class US_015 extends BaseTestReport {
 
  */
 
-//        extentTest = extentReports.createTest("testCase07");//Bu kod satiri test raporu olusturmak icin yazildi.
+        extentTest = extentReports.createTest("testCase07");//Bu kod satiri test raporu olusturmak icin yazildi.
         bags.indirimliUrunler();//Indirimli urunler listeye alindi
         bags.methodMastHarbour();//Indirimi olan herhangi bir urun secildi.
         bags.listeFiyat();//Urun liste fiyati icin calisildi
@@ -184,7 +179,8 @@ public class US_015 extends BaseTestReport {
 5-Kullanıcının ürün detayını görüntülediğine dair doğrulama yapılmalıdır.
 
  */
-        //       extentTest = extentReports.createTest("testCase08");//Bu kod satiri test raporu olusturmak icin yazildi.
+
+        extentTest = extentReports.createTest("testCase08");//Bu kod satiri test raporu olusturmak icin yazildi.
 
         bags.clickElementByJS_TC08(bags.gucciPurse);
     }
