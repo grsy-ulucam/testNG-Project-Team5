@@ -18,7 +18,7 @@ public class testCaseValid extends BaseTestReport {
 3-Kullanıcı çıkan ekranda email adresine içinde en az bir tane @ işareti olan email adresini girer.
 4-Ayrıca email adresi türkçe karakterler (ç,ğ vs) içermemelidir.
 5-Password kısmına en az 8 karakterli bir şifre girmelidir
-6-Kullanıcı daha sonra Login butonuna  tıklar ve login olur
+6-Kullanıcı daha sonra pages.Login butonuna  tıklar ve login olur
  */
    @Test
    public  void valid(){//geçerli email ve şifre ile giriş

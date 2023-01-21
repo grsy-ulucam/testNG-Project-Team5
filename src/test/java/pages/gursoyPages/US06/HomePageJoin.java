@@ -30,13 +30,13 @@ public class HomePageJoin extends BaseTestReport {
     WebElement password;
 
 
-    @FindBy(xpath ="//button[text()='Login']")
+    @FindBy(xpath ="//button[text()='pages.Login']")
     WebElement login;
 
-    @FindBy(xpath ="//button[text()='Login with Google']")
+    @FindBy(xpath ="//button[text()='pages.Login with Google']")
     WebElement loginGoogle;
 
-    @FindBy(xpath ="(//button[.='Login with Mobile number']")
+    @FindBy(xpath ="(//button[.='pages.Login with Mobile number']")
     WebElement loginMobileNumber;
 
     @FindBy(xpath = "(//button[@data-variant='normal'])[5]")

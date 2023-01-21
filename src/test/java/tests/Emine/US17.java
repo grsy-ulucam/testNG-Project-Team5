@@ -1,4 +1,4 @@
-package tests;
+package tests.Emine;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.US_19.HomePageAll;
+import pages.Emine.HomePageAll;
 import utilities.BaseTestReport;
 import utilities.Driver;
 
