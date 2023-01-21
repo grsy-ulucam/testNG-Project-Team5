@@ -1,19 +1,17 @@
-package pages.Login;
+package pages.gursoyPages.US06;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.BaseTestReport;
 import utilities.Driver;
 
-
 import java.time.Duration;
 
-public class CustomerLoginPage extends BaseTestReport {
+public class LoginClassPage extends BaseTestReport {
 
-    public CustomerLoginPage() {
+    public LoginClassPage() {
 
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -21,18 +19,9 @@ public class CustomerLoginPage extends BaseTestReport {
     @FindBy(xpath = "//button[text()='Join']")
     WebElement join;
 
-    @FindBy(xpath = "//button[text()='Login']")
-    WebElement login;
+    public void loginPrivate() {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        join.click();
 
-
-    public void customerLogin() {
-
-            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-
-            join.click();
-
-            login.click();
-
-
-        }
     }
+}

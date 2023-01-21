@@ -58,7 +58,7 @@ public class BaseTestReport {
     public void teardown(ITestResult result) throws IOException {
 
         if(result.getStatus() == ITestResult.FAILURE){
-            String screenShotLocation = ReusableMethods.getScreenshot(Driver.getDriver(), result.getName());
+            String screenShotLocation = ReusableMethods.getScreenshot();
             extentTest.fail(result.getName());
             extentTest.addScreenCaptureFromPath(screenShotLocation);
             extentTest.fail(result.getThrowable());
@@ -67,7 +67,7 @@ public class BaseTestReport {
             extentTest.skip("Test Case is skipped: " + result.getName()); // Ignore olanlar
         }
 
-
+//        Driver.getDriver().quit();
     }
 
     @AfterSuite

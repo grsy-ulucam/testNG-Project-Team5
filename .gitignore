@@ -1,3 +1,4 @@
-/src/test/java/utilities/
-/target/
-/src/test/java/pages/Login/
+.idea/
+pom.xml
+config.properties
+.utilities/
