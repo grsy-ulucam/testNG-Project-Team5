@@ -1,4 +1,4 @@
-package tests;
+package tests.Emine;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
@@ -8,8 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Login.SellerLoginPage;
-import pages.US1.AuthorsPage;
-import pages.US1.ManufacturersPage;
+import pages.Emine.AuthorsPage;
+import pages.Emine.ManufacturersPage;
 import utilities.BaseTestReport;
 import utilities.Driver;
 

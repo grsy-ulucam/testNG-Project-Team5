@@ -13,7 +13,7 @@ public class testCaseUnValid extends BaseTestReport {
 2-Kullanıcı joine veya   tıklar
 3-Kullanıcı çıkan ekranda email adresine içinde en az bir tane @ işareti olmayan email adresini girer.
 4-Ayrıca email adresi türkçe karakterler (ç,ğ vs) içermelidir.
-5-Satıcı çıkan ekranda Login butonuna tıklar ve giriş yapamaz
+5-Satıcı çıkan ekranda pages.Login butonuna tıklar ve giriş yapamaz
    */
 
 

@@ -1,4 +1,4 @@
-package pages.US1;
+package pages.Emine;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
